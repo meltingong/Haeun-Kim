@@ -151,8 +151,20 @@ public class ReferenceTypeAccountArrayMain {
 			  	D. accounts 에 임시배열대입 
 		****************************************************/	
 			System.out.println("----------------------------Account객체추가[OPTION]----------------------------");
+				Account[] tempAccount = {null,null,null,null,null,null,null,null,null,null};
+					for(int i = 0; i < tempAccount.length; i++) {
+						for(int j = 0; j < accounts.length; j++) {
+							Account temp = tempAccount[i];
+							tempAccount[i] = accounts[j]; 
+							accounts[j]  = temp;
+						}
+						tempAccount[9] = new Account(101010,"CHA", 98600, 3.7);
+					}
+						for(int i = 0; i < tempAccount.length; i++) {
+							tempAccount[i].print();
+					}
 			System.out.println("----------------------------Account객체삭제[OPTION]----------------------------");
-		 	
+			
 
 	}
 
