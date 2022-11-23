@@ -164,24 +164,25 @@ public class ReferenceTypeAccountArrayMain {
 					  	D. accounts 에 임시배열대입 
 					 ****************************************************/	
 			System.out.println("----------------------------Account객체삭제[OPTION]----------------------------");
-		 	
 				for(int i = 0; i < accounts.length; i++) {
-					if(accounts[i].getNo() == 8888) {
-						accounts[i] = null;
-						break;
-					}
-				}
-				Account[] temp = new Account[accounts.length-1];
-				for(int i = 0; i < accounts.length; i++) {
-						if(accounts[i] != null) {
-							temp[i] = accounts[i];
-							
-						}else {
-							temp[i] = accounts[i+1];
+						if(accounts[i].getNo() == 8888) {
+							accounts[i] = null;
+							break;
 						}
-				}
-			
-					
+					}
+				Account[] temp = new Account[accounts.length-1];
+					for(int i = 0; i < accounts.length; i++) {
+						for(int j = i; j <= i; j++) {
+							if(accounts[i] != null){
+								temp[j] = accounts[i];
+								break;
+							}else if(accounts[i] == null) {
+								j++;
+							}else {
+								temp[j-1] = accounts[i];
+							}
+						}
+					}
 					accounts = temp;
 					for(int i = 0; i < accounts.length; i++) {
 						accounts[i].print();
