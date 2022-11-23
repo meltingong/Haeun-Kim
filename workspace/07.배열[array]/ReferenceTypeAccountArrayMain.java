@@ -137,35 +137,55 @@ public class ReferenceTypeAccountArrayMain {
 					}
 				}
 			
-		/************************OPTION***********************
-		 1 . accounts배열 객체에 새로 생성한 계좌객체 추가
-		 	A. accounts.length+1개 짜리 임시배열 생성
-		 	B. accounts의 모든 계좌객체 임시배열로 이동
-		 	C. 임시배열에 새로운 Account 객체 추가
-		 	D. accounts에 임시배열주소 대입
-		 	
-		 2 . accounts배열 객체에서 계좌번호 4444번 계좌객체삭제
-		 	A. accounts 에서 8888계좌찾아서 null대입
-			 	B. accounts.length-1 개짜리 임시배열생성
-			 	C. accounts null이아닌 모든계좌 임시배열로이동
-			  	D. accounts 에 임시배열대입 
-		****************************************************/	
-			System.out.println("----------------------------Account객체추가[OPTION]----------------------------");
-				Account[] tempAccount = {null,null,null,null,null,null,null,null,null,null};
-					for(int i = 0; i < tempAccount.length; i++) {
-						for(int j = 0; j < accounts.length; j++) {
-							Account temp = tempAccount[i];
-							tempAccount[i] = accounts[j]; 
-							accounts[j]  = temp;
-						}
-						tempAccount[9] = new Account(101010,"CHA", 98600, 3.7);
-					}
-						for(int i = 0; i < tempAccount.length; i++) {
-							tempAccount[i].print();
-					}
-			System.out.println("----------------------------Account객체삭제[OPTION]----------------------------");
+			/************************OPTION***********************
+			 1 . accounts배열 객체에 새로 생성한 계좌객체 추가
+			 	A. accounts.length+1개 짜리 임시배열 생성
+			 	B. accounts의 모든 계좌객체 임시배열로 이동
+			 	C. 임시배열에 새로운 Account 객체 추가
+			 	D. accounts에 임시배열주소 대입 
+			 ****************************************************/	
 			
-
+			System.out.println("----------------------------Account객체추가[OPTION]----------------------------");
+			
+					Account[] tempAccount = new Account[accounts.length+1];
+					for(int i = 0; i < accounts.length; i++) {
+						tempAccount[i] = accounts[i];		
+					}
+					tempAccount[9] = new Account(101010,"CHA", 98600, 3.7);
+						accounts = tempAccount;
+						for(int i = 0; i < accounts.length; i++) {
+							accounts[i].print();
+						}
+					/************************OPTION***********************
+					2 . accounts배열 객체에서 계좌번호 8888번 계좌객체삭제
+				 		A. accounts 에서 8888계좌찾아서 null대입
+					 	B. accounts.length-1 개짜리 임시배열생성
+					 	C. accounts null이아닌 모든계좌 임시배열로이동
+					  	D. accounts 에 임시배열대입 
+					 ****************************************************/	
+			System.out.println("----------------------------Account객체삭제[OPTION]----------------------------");
+		 	
+				for(int i = 0; i < accounts.length; i++) {
+					if(accounts[i].getNo() == 8888) {
+						accounts[i] = null;
+						break;
+					}
+				}
+				Account[] temp = new Account[accounts.length-1];
+				for(int i = 0; i < accounts.length; i++) {
+						if(accounts[i] != null) {
+							temp[i] = accounts[i];
+							
+						}else {
+							temp[i] = accounts[i+1];
+						}
+				}
+			
+					
+					accounts = temp;
+					for(int i = 0; i < accounts.length; i++) {
+						accounts[i].print();
+					}
 	}
 
 }
