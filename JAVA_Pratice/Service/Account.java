@@ -1,5 +1,4 @@
-package com.itwill05.service.account;
-
+package com.itwill01.service;
 public class Account {
 	/*
 	 * 멤버필드 private
