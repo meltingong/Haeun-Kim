@@ -1,4 +1,5 @@
-package com.itwill01.service;
+package com.itwill04.service;
+
 public class Account {
 	/*
 	 * 멤버필드 private
@@ -24,7 +25,6 @@ public class Account {
 		this.balance=balance;
 		this.iyul=iyul;
 	}
-	
 	
 	/*
 	 멤버메쏘드 public

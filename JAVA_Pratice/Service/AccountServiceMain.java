@@ -1,13 +1,17 @@
-package com.itwill01.service;
+package com.itwill04.service;
 
 public class AccountServiceMain {
 
 	public static void main(String[] args) {
-AccountService accountService=new AccountService();
+		AccountService accountService=new AccountService();
 		
 		//<<과제아님>>
+		System.out.println("0.계좌객체를 인자로받아서 Account[]에추가[OPTION]");
+		Account newAccount = new Account(1010,"CHO",90000,2.7);
+		accountService.addAccount(newAccount);
 		System.out.println("0.AccountService객체야 Account추가(배열사이즈증가)[OPTION]");
-		accountService.addAccount(10101010, "SONG", 50000, 1.2);
+		accountService.addAccount(1212, "CHA", 58000, 4.5);
+		accountService.addAccount(1313, "JO", 40000, 2.3);
 		System.out.println("1.AccountService객체야 은행계좌들 총계좌수출력해줘");
 		accountService.totAccountNumberPrint();
 		System.out.println("2.AccountService객체야 은행계좌들 전체출력해줘");
@@ -35,13 +39,17 @@ AccountService accountService=new AccountService();
 		
 		
 		//accountService.sort(AccountService.SORT_BY_NO, AccountService.SORT_ASC);
+		System.out.println("AccountService.SORT_BY_NO, AccountService.SORT_ASC");
+		accountService.sort(2, 1);
 		System.out.println("12.AccountService객체야 계좌객체줄께 (이름,잔고,이율) 수정(update)해줘)[OPTION]");
-		accountService.updateAccount(1111, "CHA", 45000, 2.5);
+		Account updateAccount = new Account(1111,"CHA",45000,2.5);
+		accountService.updateAccount(updateAccount);
+		System.out.println("========13번 수정 전=======");
+		accountService.findByNoPrint(1313);
 		System.out.println("13.AccountService객체야 번호,이름,잔고,이율 계좌 데이타줄께 이름,잔고,이율 수정(update)해줘)[OPTION]");
-		
-		
-		
-		
+		accountService.updateAccount(1313, "DON", 35000, 1.7);
+		System.out.println("========13번 수정 후=======");
+		accountService.findByNoPrint(1313);
 	}
 
 }
