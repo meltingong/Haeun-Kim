@@ -120,6 +120,11 @@ public class ReferenceTypeAccountArrayMain {
 			accounts[i].print();
 		}
 		System.out.println("9.계좌이름순으로 오름(내림)차순정렬(String 클래스를 배운 후에 추가)");
+		for(int i = 0; i < accounts.length; i++) {
+			for(int j = 0; j < accounts.length-1 ; j++) {
+				
+			}
+		}
 		
 		System.out.println("10.5555계좌한개 이율을 3.6으로변경");
 			for(Account account:accounts) {
@@ -137,6 +142,14 @@ public class ReferenceTypeAccountArrayMain {
 					}
 				}
 			
+			System.out.println("-----------Account에 재정의 된 toString메소드-----------");
+			for(Account account : accounts) {
+				System.out.println(account);
+			}
+			System.out.println();
+			System.out.println();
+			System.out.println(accounts[accounts.length-1]);
+			
 			/************************OPTION***********************
 			 1 . accounts배열 객체에 새로 생성한 계좌객체 추가
 			 	A. accounts.length+1개 짜리 임시배열 생성
@@ -149,9 +162,9 @@ public class ReferenceTypeAccountArrayMain {
 			
 					Account[] tempAccount = new Account[accounts.length+1];
 					for(int i = 0; i < accounts.length; i++) {
-						tempAccount[i] = accounts[i];		
+						tempAccount[i] = accounts[i];
+						tempAccount[accounts.length] = new Account(1010,"CHA", 98600, 3.7);
 					}
-					tempAccount[9] = new Account(101010,"CHA", 98600, 3.7);
 						accounts = tempAccount;
 						for(int i = 0; i < accounts.length; i++) {
 							accounts[i].print();
@@ -164,26 +177,26 @@ public class ReferenceTypeAccountArrayMain {
 					  	D. accounts 에 임시배열대입 
 					 ****************************************************/	
 			System.out.println("----------------------------Account객체삭제[OPTION]----------------------------");
+		 	
 				for(int i = 0; i < accounts.length; i++) {
-						if(accounts[i].getNo() == 8888) {
-							accounts[i] = null;
-							break;
-						}
+					if(accounts[i].getNo() == 8888) {
+						accounts[i] = null;
+						break;
 					}
+				}
 				Account[] temp = new Account[accounts.length-1];
-					for(int i = 0; i < accounts.length; i++) {
-						for(int j = i; j <= i; j++) {
-							if(accounts[i] != null){
-								temp[j] = accounts[i];
-								break;
-							}else if(accounts[i] == null) {
-								j++;
-							}else {
-								temp[j-1] = accounts[i];
+					for(int i = 0; i < accounts.length-1; i++) {
+						for(int j = 0; j < accounts.length; j++) {
+							if(accounts[j] != null) {
+								Account tp = accounts[j];
+								temp[i] = tp;
+								i++;
 							}
 						}
 					}
-					accounts = temp;
+						
+						accounts = temp;
+						
 					for(int i = 0; i < accounts.length; i++) {
 						accounts[i].print();
 					}
