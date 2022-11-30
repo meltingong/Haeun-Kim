@@ -1,4 +1,4 @@
-package com.itwill05.service.array.academy;
+package com.itwill05.Academy;
 /*
  * AcademyMember들의 업무처리클래스
  *  Create
@@ -6,12 +6,21 @@ package com.itwill05.service.array.academy;
  *  Update
  *  Delete
  */
-
 public class AcademyMemberService {
 	private AcademyMember[] members;
 	public static final int STUDENT = 1;
 	public static final int GANGSA = 2;
 	public static final int STAFF = 3;
+	
+	public static final int JAVA =1;
+	public static final int LINUX =2;
+	public static final int IOT =3;
+	public static final int PROGRAMING =4;
+	public static final int DB =5;
+	public static final int OS =6;
+	public static final int SALES =7;
+	public static final int PRODUCT =8;
+	
 	
 	
 	public AcademyMemberService() {
@@ -82,50 +91,67 @@ public class AcademyMemberService {
 		AcademyMember[] findMember = null;
 		switch(number) {
 		case STUDENT :
-			int count = 0;
+			int stCount = 0;
 			for(int i = 0; i < members.length; i++) {
 				if(members[i] instanceof AcademyStudent) {
-					count++;
+					stCount++;
 				}
 			}
-			findMember = new AcademyMember[count];
-			int index = 0;
+			findMember = new AcademyMember[stCount];
+			int stIndex = 0;
 			for(int i = 0; i < members.length; i++) {
 				if(members[i] instanceof AcademyStudent) {
-					findMember[index] = members[i];
-					index++;
+					findMember[stIndex] = members[i];
+					stIndex++;
 				}
 			}
 			break;
 		case GANGSA :
-			
+			int gaCount = 0;
 			for(int i = 0; i < members.length; i++) {
 				if(members[i] instanceof AcademyGangsa) {
-					
+					gaCount++;
+				}
+			}
+			findMember = new AcademyMember[gaCount];
+			int gaIndex = 0;
+			for(int i = 0; i < members.length; i++) {
+				if(members[i] instanceof AcademyGangsa) {
+					findMember[gaIndex] = members[i];
+					gaIndex++;
 				}
 			}
 		case STAFF : 
+			int staffCount = 0;
 			for(int i = 0; i < members.length; i++) {
 				if(members[i] instanceof AcademyStaff) {
-					members[i].print();
+					staffCount++;
+				}
+			}
+			findMember = new AcademyMember[staffCount];
+			int staffIndex = 0;
+			for(int i = 0; i < members.length; i++) {
+				if(members[i] instanceof AcademyStaff) {
+					findMember[staffIndex] = members[i];
+					staffIndex++;
 				}
 			}
 		}
-		return null;
+		return findMember;
 	}
 	
-	// sort처럼 상수 만들어서 하위 클래스가 형성되어도 메소드가 추후에 수정되지 않도록
+	// sort처럼 상수 만들어서 하위 클래스가 형성되어도 메소드가(메소드의 개수를 증가시키는 등) 수정하지 않도록
 	/*
 	 * 4.AcademyMember 중에서 자바반인   AcademyStudent 객체들 배열참조변수반환해줘 
 	 * 4.AcademyMember 중에서 영업부서인 AcademyStaff   객체들 배열참조변수반환해줘 
 	 * 4.AcademyMember 중에서 자바과목인 AcademyGangsa  객체들 배열참조변수반환해줘
 	 */
 	
-	public AcademyMember[] javaBan() {
+	public AcademyMember[] members(int number, int type) {
+		this.members(number);
 		
 		return null;
 	}
-	
 	
 	/*
 	 * 5.AcademyMember 중에서 자바반인   AcademyStudent 객체들 배열참조변수반환해줘[OPTION]
