@@ -1,6 +1,6 @@
 package com.itwill06.collection.student;
 
-import java.util.*;
+import java.util.ArrayList;
 
 public class StudentArrayListMain {
 
@@ -22,7 +22,7 @@ public class StudentArrayListMain {
 		 * 0.학생두명추가
 		 */
 		System.out.println("0.학생두명추가");
-		studentList.add(new Student(10,"CHA",78,99,60));
+		studentList.add(new Student(10,"CHA",40,35,60));
 		studentList.add(new Student(11,"JO",65,78,90));
 		/*
 		 * 1. 전체학생총점,평균,평점계산
@@ -40,41 +40,61 @@ public class StudentArrayListMain {
 		 */
 		System.out.println("2. 전체학생 총점으로 석차계산");
 		for(int i = 0; i < studentList.size(); i++) {
-			for(int j = 1; j < studentList.size()-1; j++) {
+			for(int j = 0; j < studentList.size(); j++) {
 				if(studentList.get(i).getTot() < studentList.get(j).getTot() ) {
-					
+					studentList.get(i).increaseRank();
 				}
 			}
+		}
+		for(int i = 0; i < studentList.size(); i++) {
+			studentList.get(i).print();
 		}
 		/*
 		 * 3. 전체학생출력
 		 */
 		System.out.println("3. 전체학생출력 (enhanced for)");
 		Student.headerPrint();
+		for(Student tot : studentList) {
+			tot.print();
+		}
 		
 		/*
 		 * 4. 번호3번 학생한명 출력
 		 */
 		System.out.println("4.번호3번 학생한명 출력  ");
+		for(int i = 0; i < studentList.size(); i++) {
+			if((studentList.get(i)).getNo() == 3) {
+				(studentList.get(i)).print();
+				break;
+			}
+		}
 		
 		/*
 		 * 5. 학점A인 학생들 출력
 		 */
 		System.out.println("5. 학점A인 학생들 출력");
-		
+		for(int i = 0; i < studentList.size(); i++) {
+			if((studentList.get(i)).getGrade() == 'A') {
+				(studentList.get(i)).print();
+			}
+		}
 		/*
 		 6.이름이 KIM인학생들 출력
 		 */
 		System.out.println("6.이름이 KIM인학생들 출력");
-		
+		for(int i = 0 ; i < studentList.size(); i++) {
+			if((studentList.get(i)).getName().equals("KIM")) {
+				(studentList.get(i)).print();
+			}
+		}
 		/*
 		 * 7.번호3번학생한명삭제
 		 */
 		System.out.println("7.번호3번학생삭제");
-		
-		for (int i = 0; i < studentList.size(); i++) {
-			if(studentList.get(i).getNo()==3) {
-				Student removeStudent=studentList.remove(i);
+		ArrayList<Student> tempList = studentList;
+		for (int i = 0; i < tempList.size(); i++) {
+			if(tempList.get(i).getNo()==3) {
+				Student removeStudent=tempList.remove(i);
 				removeStudent.print();
 				break;
 			}
@@ -84,14 +104,30 @@ public class StudentArrayListMain {
 		 * 8.이름KIM인 학생들삭제
 		 */
 		System.out.println("8.이름KIM인 학생들삭제");
+		for(int i = 0; i < tempList.size(); i++) {
+			if((tempList.get(i)).getName().equals("KIM")) {
+				tempList.remove(i);
+				i--;
+			}
+		}
+		for(Student removeKim : tempList) {
+			removeKim.print();
+		}
 		
 		/*
 		 * 9.평점 F 인 학생들삭제
 		 */
 		System.out.println("9.평점 F 인 학생들삭제");
+		for(int i = 0; i < tempList.size(); i++) {
+			if((tempList.get(i)).getGrade() == 'F') {
+				tempList.remove(i);
+				i--;
+			}
+		}
+		for(Student removeF : tempList) {
+			removeF.print();
+		}
 		
-		
-		/******************안해도됨******************************/
 		/*
 		 * 10. 학생총점으로 오름차순정렬
 		 */
@@ -100,7 +136,7 @@ public class StudentArrayListMain {
 		  11. 학생이름순으로 오름차순정렬
 		 */
 	
-		/********************************************************/
+		
 
 	}
 

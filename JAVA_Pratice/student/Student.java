@@ -1,8 +1,5 @@
 package com.itwill06.collection.student;
-/*
- * 성적처리를 위한 필요한 학생객체를 만들기 위한 클래스
- *  - 캡슐화
- */
+
 public class Student {
 	/*
 	 * << 속성 >> 번호 이름 국어 영어 수학 총점 평균 평점 석차 
@@ -83,7 +80,7 @@ public class Student {
 		this.rank++;
 
 	}
-
+	
 	public static void headerPrint() {
 		System.out.printf("---------------학생 성적출력-------------------%n");
 		System.out.printf("%s %s %s %s %s %s %3s %s %s%n", "학번", "이름", "국어", "영어", "수학", "총점", "평균", "평점", "석차");
@@ -167,5 +164,4 @@ public class Student {
 	public void setRank(int rank) {
 		this.rank = rank;
 	}
-
 }
