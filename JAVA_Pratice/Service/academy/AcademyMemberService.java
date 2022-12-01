@@ -1,4 +1,4 @@
-package com.itwill05.Academy;
+package com.itwill05.service.array.academy;
 /*
  * AcademyMember들의 업무처리클래스
  *  Create
@@ -6,22 +6,14 @@ package com.itwill05.Academy;
  *  Update
  *  Delete
  */
+
 public class AcademyMemberService {
 	private AcademyMember[] members;
 	public static final int STUDENT = 1;
 	public static final int GANGSA = 2;
 	public static final int STAFF = 3;
-	
-	public static final int JAVA =1;
-	public static final int LINUX =2;
-	public static final int IOT =3;
-	public static final int PROGRAMING =4;
-	public static final int DB =5;
-	public static final int OS =6;
-	public static final int SALES =7;
-	public static final int PRODUCT =8;
-	
-	
+	public static final int JAVA =4;
+	public static final int SALES = 5;
 	
 	public AcademyMemberService() {
 		members = new AcademyMember[9];
@@ -140,23 +132,92 @@ public class AcademyMemberService {
 		return findMember;
 	}
 	
-	// sort처럼 상수 만들어서 하위 클래스가 형성되어도 메소드가(메소드의 개수를 증가시키는 등) 수정하지 않도록
+	// sort처럼 상수 만들어서 하위 클래스가 형성되어도 메소드가 추후에 수정되지 않도록
 	/*
 	 * 4.AcademyMember 중에서 자바반인   AcademyStudent 객체들 배열참조변수반환해줘 
 	 * 4.AcademyMember 중에서 영업부서인 AcademyStaff   객체들 배열참조변수반환해줘 
 	 * 4.AcademyMember 중에서 자바과목인 AcademyGangsa  객체들 배열참조변수반환해줘
 	 */
 	
-	public AcademyMember[] members(int number, int type) {
-		this.members(number);
-		
-		return null;
+	public AcademyMember[] member(int number, int type) {
+		AcademyMember[] findMember = null;
+		switch(number) {
+		case STUDENT :
+			int stIndex = 0;
+			for(int i = 0; i < members.length; i++) {
+				if(members[i] instanceof AcademyStudent) {
+				AcademyStudent temp = (AcademyStudent)members[i];
+					if(type == JAVA && temp.getBan().equals("자바")) {
+						stIndex++;
+					}
+				}
+			}
+			findMember = new AcademyMember[stIndex];
+			int a = 0;
+			for(int i = 0; i < members.length; i++) {
+				if(members[i] instanceof AcademyStudent) {
+				AcademyStudent temp = (AcademyStudent)members[i];
+					if(type == JAVA && temp.getBan().equals("자바")) {
+						findMember[a] = members[i];
+						a++;
+					}
+				}
+			}
+			break;
+		case GANGSA :
+			int gaIndex = 0;
+			for(int i = 0; i < members.length; i++) {
+				if(members[i] instanceof AcademyGangsa) {
+				AcademyGangsa temp = (AcademyGangsa)members[i];
+					if(type == JAVA && temp.subject.equals("자바")) {
+						gaIndex++;
+					}
+				}
+			}
+			findMember = new AcademyMember[gaIndex];
+			int b = 0;
+			for(int i = 0; i < members.length; i++) {
+				if(members[i] instanceof AcademyGangsa) {
+				AcademyGangsa temp = (AcademyGangsa)members[i];
+					if(type == JAVA && temp.subject.equals("자바")) {
+						findMember[b] = members[i];
+						b++;
+					}else {
+						System.out.println("만족하는 과목이 없습니다");
+					}
+				}
+			}
+			break;
+		case STAFF : 
+			int staffIndex = 0;
+			for(int i = 0; i < members.length; i++) {
+				if(members[i] instanceof AcademyStaff) {
+				AcademyStaff temp = (AcademyStaff)members[i];
+					if(type == SALES && temp.getDepart().equals("영업")) {
+						staffIndex++;
+					}
+				}
+			}
+			findMember = new AcademyMember[staffIndex];
+			int c = 0;
+			for(int i = 0; i < members.length; i++) {
+				if(members[i] instanceof AcademyStaff) {
+					AcademyStaff temp = (AcademyStaff)members[i];
+					if(type == SALES && temp.getDepart().equals("영업")) {
+						findMember[c] = members[i];
+						c++;
+					}
+				}
+			}
+			break;
+		}
+		return findMember;
 	}
-	
 	/*
 	 * 5.AcademyMember 중에서 자바반인   AcademyStudent 객체들 배열참조변수반환해줘[OPTION]
 	 * 5.AcademyMember 중에서 영업부서인 AcademyStaff   객체들 배열참조변수반환해줘[OPTION] 
 	 * 5.AcademyMember 중에서 자바과목인 AcademyGangsa  객체들 배열참조변수반환해줘[OPTION]
 	 */
 
+ 
 }
