@@ -136,7 +136,7 @@ public class StudentArrayListMain {
 				if((studentList.get(i)).getTot() < (studentList.get(j)).getTot()) {
 					Student temp = studentList.get(i);
 					studentList.remove(i);
-					studentList.add(i,temp);
+					studentList.add(j,temp);
 				}
 			}
 		}
