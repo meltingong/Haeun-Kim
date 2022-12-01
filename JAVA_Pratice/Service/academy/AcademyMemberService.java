@@ -7,7 +7,7 @@ package com.itwill05.service.array.academy;
  *  Delete
  */
 
-public class AcademyMemberService {
+public class AcademyMemberService2 {
 	private AcademyMember[] members;
 	public static final int STUDENT = 1;
 	public static final int GANGSA = 2;
