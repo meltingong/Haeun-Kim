@@ -58,11 +58,24 @@ order by hiredate;
 */
 -- 커미션 포함 X
 
+select  deptno,
+        sum(sal) "커미션 불포함"
+from emp
+group by deptno;
 
 
 -- 커미션 포함 
 
+select  deptno,
+        sum(sal)
+from emp
+group by deptno;
 
 /*
 5. 사원테이블에서 SALESMAN을 제외한 JOB별 급여합계를 구하시오.
 */
+
+select 
+
+from emp
+group by job;
